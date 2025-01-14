@@ -19,8 +19,8 @@ const Chat = () => {
   };
 
   return (
-    <div className="flex flex-col w-full bg-white shadow-lg rounded-lg overflow-hidden">
-      <div className="flex-1 p-4 space-y-4 overflow-y-auto max-h-96">
+    <div className="flex flex-col w-full h-full bg-white shadow-lg rounded-lg p-3">
+      <div className="flex-1  space-y-4 overflow-y-auto max-h-96 ">
         {/* Chat messages */}
         <div className="space-y-4">
           {messages.map((msg, index) => (
