@@ -7,6 +7,7 @@ const cors = require('cors');
       
             const allowedOrigins = ["http://localhost:3000", "http://192.168.58.17:3000", "http://localhost:5173"]
         if(!origin || allowedOrigins.indexOf(origin) != -1){
+            console.log('hellooooooooooooooooooooo')
             callback(null,true) // give permission to user, so that user request allowed
         }else{
             callback(new Error("Not allowed by cors"))

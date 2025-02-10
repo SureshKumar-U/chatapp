@@ -7,9 +7,9 @@ const chatContextProvider = ({children})=>{
     const [selectedChat, setSelectedChat] = useState("")
 
 
-    return <chatContext.Provider>
+    return <chatContext.Provider >
         {children}
     </chatContext.Provider>
 }
 
-export default chatContext
+export default {chatContext, chatContextProvider}

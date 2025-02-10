@@ -1,5 +1,5 @@
 const bcrypt  = require("bcrypt")
-const userModel  = require("../../models/usersModel.js")
+const userModel  = require("../models/usersModel")
 const jwt = require( "jsonwebtoken")
  const loginController = async (request, response) => {
     try {
@@ -31,9 +31,8 @@ const jwt = require( "jsonwebtoken")
 
  const signUpController = async(request,response)=>{
     try{
+     
         const { name, email, password} = request.body
-        console.log(request.body)
-       
         //validate the email and password
          if(!name || !email || !password){
             return  response.status(400).json({status:400, message:"All fields are mandatory"})
@@ -56,6 +55,21 @@ const jwt = require( "jsonwebtoken")
 }
 
 const getAllUsersController = async(req,res)=>{
+
+    try{
+        const users = await userModel.find({})
+      if(users.length == 0){
+        return res.status(200).json({message:"no users available"})
+      }
+      return res.status(200).json({message:"users fetched successfully", users:users})
+
+    }
+    catch(err){
+        console.log(err)
+        return res.status(500).json({
+            error: err,
+        })
+    }
     return res.json({message:"All users are fetched successfully"})
 }
 
